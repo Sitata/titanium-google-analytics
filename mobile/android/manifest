@@ -11,7 +11,7 @@ copyright: Copyright (c) 2012 by Matt Tuttle
 
 
 # these should not be edited
-name: googleAnalytics
+name: google-analytics
 moduleid: analytics.google
 guid: 2dce4125-1f59-40f1-aeb9-3ed250b36dd9
 platform: android
