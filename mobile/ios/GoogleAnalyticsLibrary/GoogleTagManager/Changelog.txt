@@ -1,6 +1,20 @@
 Google Tag Manager SDK for iOS Changelog
 
 --------------------------------------------
+Version: 3.10 (November, 2014)
+--------------------------------------------
+* Deprecate TAGContainerFuture based openContainerWithId.  Using this
+  API on iOS8 results in errors if the get is called during some phases
+  of the UIAppDelegate lifecycle.
+* Added support for custom metrics and custom dimensions to
+  Enhanced Ecommerce for the Google Universal Analytics tag.
+* Fixed a bug which required products for Enhanced Ecommerce
+  actions that have optional products.
+* Support Advertising ID Features for the Google Universal Analytics tag.
+* Updated CuteAnimals sample application to demonstrate how to send data
+  when the app is going into the background.
+
+--------------------------------------------
 Version: 3.09 (July, 2014)
 --------------------------------------------
 * Added support for Enhanced Ecommerce to Google Universal Analytics tag.

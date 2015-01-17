@@ -19,8 +19,13 @@
 #import "TAGLogger.h"
 #import "TAGManager.h"
 
-@interface AppDelegate ()
+@interface AppDelegate ()<TAGContainerOpenerNotifier>
 
+// Used for sending traffic in the background.
+@property(nonatomic, assign) BOOL okToWait;
+@property(nonatomic, copy) void (^dispatchHandler)(TAGDispatchResult result);
+
+- (void)setupRootViewController;
 - (NSDictionary *)loadImages;
 
 @end
@@ -51,26 +56,36 @@
   }
 
   // Open a container.
-  id<TAGContainerFuture> future =
-      [TAGContainerOpener openContainerWithId:@"GTM-XXXX"
-                                   tagManager:self.tagManager
-                                     openType:kTAGOpenTypePreferNonDefault
-                                      timeout:nil];
+  [TAGContainerOpener openContainerWithId:@"GTM-XXXX"
+                               tagManager:self.tagManager
+                                 openType:kTAGOpenTypePreferNonDefault
+                                  timeout:nil
+                                 notifier:self];
 
   self.images = [self loadImages];
 
+  return YES;
+}
+
+- (void)containerAvailable:(TAGContainer *)container {
+  // Important note: containerAvailable may be called from a different thread, marshall the
+  // notification back to the main thread to avoid a race condition with viewDidAppear.
+  dispatch_async(dispatch_get_main_queue(), ^{
+    self.container = container;
+    // Register two custom function call macros to the container.
+    [self.container registerFunctionCallMacroHandler:[[CustomMacroHandler alloc] init]
+                                            forMacro:@"increment"];
+    [self.container registerFunctionCallMacroHandler:[[CustomMacroHandler alloc] init]
+                                            forMacro:@"mod"];
+    // Register a custom function call tag to the container.
+    [self.container registerFunctionCallTagHandler:[[CustomTagHandler alloc] init]
+                                            forTag:@"custom_tag"];
+    [self setupRootViewController];
+  });
+}
+
+- (void)setupRootViewController {
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-
-  self.container = [future get];
-  // Register two custom function call macros to the container.
-  [self.container registerFunctionCallMacroHandler:[[CustomMacroHandler alloc] init]
-                                          forMacro:@"increment"];
-  [self.container registerFunctionCallMacroHandler:[[CustomMacroHandler alloc] init]
-                                          forMacro:@"mod"];
-  // Register a custom function call tag to the container.
-  [self.container registerFunctionCallTagHandler:[[CustomTagHandler alloc] init]
-                                          forTag:@"custom_tag"];
-
   self.viewController = [[RootViewController alloc] initWithNibName:@"RootViewController"
                                                              bundle:nil];
 
@@ -80,8 +95,6 @@
   self.viewController.navController = self.navController;
   self.window.rootViewController = self.navController;
   [self.window makeKeyAndVisible];
-
-  return YES;
 }
 
 - (BOOL)application:(UIApplication *)application
@@ -95,6 +108,48 @@
   // Code to handle other urls.
 
   return NO;
+}
+
+// In case the app was sent into the background when there was no network connection, we will use
+// the background data fetching mechanism to send any pending Google Analytics data.  Note that
+// this app has turned on background data fetching in the capabilities section of the project.
+-(void)application:(UIApplication *)application
+    performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
+{
+  [self sendHitsInBackground];
+  completionHandler(UIBackgroundFetchResultNewData);
+}
+
+// We'll try to dispatch any hits queued for dispatch as the app goes into the background.
+- (void)applicationDidEnterBackground:(UIApplication *)application
+{
+  [self sendHitsInBackground];
+}
+
+// This method sends hits in the background until either we're told to stop background processing,
+// we run into an error, or we run out of hits.
+- (void)sendHitsInBackground {
+  self.okToWait = YES;
+  __weak AppDelegate *weakSelf = self;
+  __block UIBackgroundTaskIdentifier backgroundTaskId =
+      [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
+      weakSelf.okToWait = NO;
+  }];
+
+  if (backgroundTaskId == UIBackgroundTaskInvalid) {
+    return;
+  }
+
+  self.dispatchHandler = ^(TAGDispatchResult result) {
+      // If the last dispatch succeeded, and we're still OK to stay in the background then kick off
+      // again.
+      if (result == kTAGDispatchGood && weakSelf.okToWait ) {
+        [[TAGManager instance] dispatchWithCompletionHandler:weakSelf.dispatchHandler];
+      } else {
+        [[UIApplication sharedApplication] endBackgroundTask:backgroundTaskId];
+      }
+  };
+  [[TAGManager instance] dispatchWithCompletionHandler:self.dispatchHandler];
 }
 
 - (NSDictionary *)loadImages {

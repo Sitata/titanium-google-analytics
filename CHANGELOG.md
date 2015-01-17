@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## Android-3.0.0 - iOS-3.0.2 <> 2015-01-16
+### Added
+- Update iOS module to use SDK 3.10. IDFA warning in logs is no longer present.
+
 ## Android-3.0.0 - iOS-3.0.1 <> 2015-01-14
 ### Fixed
 - Forgot to change the SDK definition to 3.5.0.GA in the titanium.xcconfig file.

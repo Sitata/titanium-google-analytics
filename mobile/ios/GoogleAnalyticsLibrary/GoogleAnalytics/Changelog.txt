@@ -1,6 +1,21 @@
 Google Analytics SDK for iOS Changelog
 
 --------------------------------------------
+Version: 3.10 (November 2014)
+--------------------------------------------
+* Fixed an issue which prevented all beacons from being sent when dispatching
+  beacons.
+* Updated CuteAnimals sample application to demonstrate how to dispatch when
+  the app goes into the background.
+* Added support for additional Enhanced Ecommerce fields.
+* Removed warning messages about GAIHit and GAIProperty classes missing when
+  compiling against iOS SDK 8.0; those classes were removed.
+* Dispatching beacons is now more efficient, with multiple beacons being
+  dispatched in a single HTTPS request.
+* Requests will be compressed to save on data plan usage under certain
+  circumstances.
+
+--------------------------------------------
 Version: 3.09 (July 2014)
 -------------------------------------------
 * No change.

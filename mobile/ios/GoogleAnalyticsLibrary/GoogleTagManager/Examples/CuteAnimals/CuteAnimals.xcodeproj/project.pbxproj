@@ -269,6 +269,15 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0460;
+				TargetAttributes = {
+					113B6EE2153E1F0B003CAC38 = {
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
+					};
+				};
 			};
 			buildConfigurationList = 113B6EDD153E1F0B003CAC38 /* Build configuration list for PBXProject "CuteAnimals" */;
 			compatibilityVersion = "Xcode 3.2";
