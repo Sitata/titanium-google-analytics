@@ -285,5 +285,16 @@
 
 }
 
+-(id)enableIDFACollection
+{
+    return tracker.allowIDFACollection;
+}
+
+-(void)setEnableIDFACollection:(id)value
+{
+    ENSURE_UI_THREAD_1_ARG(value);
+    ENSURE_TYPE(value, NSNumber);
+    tracker.allowIDFACollection = [value boolValue];
+}
 
 @end

@@ -251,6 +251,15 @@ tracker.trackTransactionItem({
 	currency: "CAD"
 });
 ```
+### Tracker.enableIDFACollection
+
+Allows the IDFA (Identifier for Advertisers) be collected.
+
+```javascript
+var GA = require("analytics.google");
+var tracker = GA.getTracker("UA-XXXXXXX-X");
+tracker.enableIDFACollection = true;
+```
 
 ### Custom Dimensions and Metrics
 

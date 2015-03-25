@@ -11,17 +11,17 @@
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>59B2CD0F58593217C2ED9EE01B712125769FA3D0</key>
-		<string>github.com:Sitata/titanium-google-analytics.git</string>
+		<string>github.com:TheBookPeople/titanium-google-analytics.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>mobile/ios/google-analytics.xcodeproj</string>
+	<string>ios/google-analytics.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>59B2CD0F58593217C2ED9EE01B712125769FA3D0</key>
-		<string>../../../..</string>
+		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>github.com:Sitata/titanium-google-analytics.git</string>
+	<string>github.com:TheBookPeople/titanium-google-analytics.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
