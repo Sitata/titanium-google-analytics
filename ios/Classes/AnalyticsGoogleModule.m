@@ -40,6 +40,10 @@
             dryRun = [[GAI sharedInstance] dryRun];
             dispatchInterval = [[GAI sharedInstance] dispatchInterval];
         }, NO);
+    } else {
+            optOut = [[GAI sharedInstance] optOut];
+            dryRun = [[GAI sharedInstance] dryRun];
+            dispatchInterval = [[GAI sharedInstance] dispatchInterval];
     }
 }
 
@@ -53,6 +57,8 @@
         TiThreadPerformOnMainThread(^{
             [[GAI sharedInstance] dispatch];
         }, NO);
+    } else {
+        [[GAI sharedInstance] dispatch];
     }
 }
 
