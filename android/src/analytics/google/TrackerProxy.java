@@ -396,8 +396,8 @@ public class TrackerProxy extends KrollProxy
   }
 
   @Kroll.setProperty
-  public void setEnableIDFACollection(boolean enableIDFACollection) {
-    tracker.enableAdvertisingIdCollection(enableIDFACollection);
+  public void setEnableAdvertisingFeatures(boolean enableAdvertisingFeatures) {
+    tracker.enableAdvertisingIdCollection(enableAdvertisingFeatures);
   }
 
 }

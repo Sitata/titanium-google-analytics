@@ -251,14 +251,14 @@ tracker.trackTransactionItem({
 	currency: "CAD"
 });
 ```
-### Tracker.enableIDFACollection
+### Tracker.enableAdvertisingFeatures
 
-Allows the IDFA (Identifier for Advertisers) be collected.
+Allows the Identifier for Advertisers to be collected.
 
 ```javascript
 var GA = require("analytics.google");
 var tracker = GA.getTracker("UA-XXXXXXX-X");
-tracker.enableIDFACollection = true;
+tracker.enableAdvertisingFeatures = true;
 ```
 
 ### Custom Dimensions and Metrics

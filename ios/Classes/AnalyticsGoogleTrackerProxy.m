@@ -285,12 +285,12 @@
 
 }
 
--(id)enableIDFACollection
+-(id)enableAdvertisingFeatures
 {
     return tracker.allowIDFACollection;
 }
 
--(void)setEnableIDFACollection:(id)value
+-(void)setEnableAdvertisingFeatures:(id)value
 {
     ENSURE_UI_THREAD_1_ARG(value);
     ENSURE_TYPE(value, NSNumber);
