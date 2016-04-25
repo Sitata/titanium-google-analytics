@@ -1,6 +1,12 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## Android-3.2.1 - iOS-3.1.0 <> 2016-04-25
+Built with TiSDK 5.2.2 for compatibility with Marshmallow
+
+## Android-3.2.0 - iOS-3.1.0 <> 2015-08-18
+Brought Google Play Services up to version 7.8
+
 ## Android-3.1.0 - iOS-3.1.0 <> 2015-03-22
 ### Added
 - `trackException` method added to Android and iOS to track caught exceptions. [[mokesmokes]](https://github.com/mokesmokes)
