@@ -43,6 +43,8 @@
 		279CB48D1A040D7B00ADA980 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 279CB48C1A040D7B00ADA980 /* libsqlite3.0.dylib */; };
 		2A54E9F816446CF10011E04D /* AnalyticsGoogleTrackerProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A54E9F616446CF10011E04D /* AnalyticsGoogleTrackerProxy.h */; };
 		2A54E9F916446CF10011E04D /* AnalyticsGoogleTrackerProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A54E9F716446CF10011E04D /* AnalyticsGoogleTrackerProxy.m */; };
+		46D6577B1AC03CE400DBD4B6 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46D6577A1AC03CE400DBD4B6 /* AdSupport.framework */; };
+		46D6577C1AC03CFC00DBD4B6 /* libAdIdAccess.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 279CB3F01A03D38300ADA980 /* libAdIdAccess.a */; };
 		AA747D9F0F9514B9006C5449 /* AnalyticsGoogle_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* AnalyticsGoogle_Prefix.pch */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 /* End PBXBuildFile section */
@@ -84,6 +86,7 @@
 		279CB48C1A040D7B00ADA980 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		2A54E9F616446CF10011E04D /* AnalyticsGoogleTrackerProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnalyticsGoogleTrackerProxy.h; path = Classes/AnalyticsGoogleTrackerProxy.h; sourceTree = "<group>"; };
 		2A54E9F716446CF10011E04D /* AnalyticsGoogleTrackerProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AnalyticsGoogleTrackerProxy.m; path = Classes/AnalyticsGoogleTrackerProxy.m; sourceTree = "<group>"; };
+		46D6577A1AC03CE400DBD4B6 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		AA747D9E0F9514B9006C5449 /* AnalyticsGoogle_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnalyticsGoogle_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D2AAC07E0554694100DB518D /* libAnalyticsGoogle.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAnalyticsGoogle.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,6 +97,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46D6577C1AC03CFC00DBD4B6 /* libAdIdAccess.a in Frameworks */,
+				46D6577B1AC03CE400DBD4B6 /* AdSupport.framework in Frameworks */,
 				279CB48D1A040D7B00ADA980 /* libsqlite3.0.dylib in Frameworks */,
 				279CB48A1A040CB200ADA980 /* SystemConfiguration.framework in Frameworks */,
 				279CB42B1A03D3CE00ADA980 /* libz.dylib in Frameworks */,
@@ -128,6 +133,7 @@
 		0867D69AFE84028FC02AAC07 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				46D6577A1AC03CE400DBD4B6 /* AdSupport.framework */,
 				279CB48C1A040D7B00ADA980 /* libsqlite3.0.dylib */,
 				279CB4891A040CB200ADA980 /* SystemConfiguration.framework */,
 				279CB42A1A03D3CE00ADA980 /* libz.dylib */,

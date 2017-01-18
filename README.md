@@ -256,6 +256,15 @@ tracker.trackTransactionItem({
 	currency: "CAD"
 });
 ```
+### Tracker.enableAdvertisingFeatures
+
+Allows the Identifier for Advertisers to be collected.
+
+```javascript
+var GA = require("analytics.google");
+var tracker = GA.getTracker("UA-XXXXXXX-X");
+tracker.enableAdvertisingFeatures = true;
+```
 
 ### Custom Dimensions and Metrics
 

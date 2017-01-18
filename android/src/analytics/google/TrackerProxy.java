@@ -410,5 +410,9 @@ public class TrackerProxy extends KrollProxy
       .build());
   }
 
+  @Kroll.setProperty
+  public void setEnableAdvertisingFeatures(boolean enableAdvertisingFeatures) {
+    tracker.enableAdvertisingIdCollection(enableAdvertisingFeatures);
+  }
 
 }
