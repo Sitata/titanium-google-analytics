@@ -2,7 +2,6 @@ tmp
 bin
 build
 libs
-dist
 *.zip
 
 .classpath
